@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bb-001", "name": "Red Cross Blood Centre — Mumbai",
+    "phone": "+912222001000", "operatingHours": "24x7",
+    "location": { "lat": 18.9319, "lng": 72.8354, "address": { "line1": "Fort", "city": "Mumbai", "state": "MH", "postalCode": "400001", "country": "IN" } },
+    "affiliatedHospitalId": "h-003",
+    "stock": [
+      { "bloodGroup": "O+",  "unitsAvailable": 42, "level": "high",     "lastUpdated": "2026-07-15T09:00:00Z" },
+      { "bloodGroup": "O-",  "unitsAvailable": 6,  "level": "low",      "lastUpdated": "2026-07-15T09:00:00Z" },
+      { "bloodGroup": "A+",  "unitsAvailable": 28, "level": "moderate", "lastUpdated": "2026-07-15T09:00:00Z" },
+      { "bloodGroup": "B+",  "unitsAvailable": 18, "level": "moderate", "lastUpdated": "2026-07-15T09:00:00Z" },
+      { "bloodGroup": "AB+", "unitsAvailable": 3,  "level": "critical", "lastUpdated": "2026-07-15T09:00:00Z" }
+    ]
+  },
+  {
+    "id": "bb-002", "name": "Lilavati Hospital Blood Bank",
+    "phone": "+912226400777", "operatingHours": "06:00–22:00",
+    "location": { "lat": 19.0509, "lng": 72.8296, "address": { "line1": "Bandra Reclamation", "city": "Mumbai", "state": "MH", "postalCode": "400050", "country": "IN" } },
+    "affiliatedHospitalId": "h-001",
+    "stock": [
+      { "bloodGroup": "O+",  "unitsAvailable": 15, "level": "moderate", "lastUpdated": "2026-07-15T08:30:00Z" },
+      { "bloodGroup": "A+",  "unitsAvailable": 22, "level": "high",     "lastUpdated": "2026-07-15T08:30:00Z" },
+      { "bloodGroup": "B-",  "unitsAvailable": 1,  "level": "critical", "lastUpdated": "2026-07-15T08:30:00Z" }
+    ]
+  }
+]

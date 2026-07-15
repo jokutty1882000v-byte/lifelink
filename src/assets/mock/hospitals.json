@@ -1,0 +1,23 @@
+[
+  {
+    "id": "h-001", "name": "Lilavati Hospital", "phone": "+912226400888",
+    "website": "https://lilavatihospital.com",
+    "location": { "lat": 19.0509, "lng": 72.8296, "address": { "line1": "Bandra Reclamation", "city": "Mumbai", "state": "MH", "postalCode": "400050", "country": "IN" } },
+    "emergency24x7": true, "hasBloodBank": true, "specialties": ["Cardiology", "Trauma"], "ratingAvg": 4.5
+  },
+  {
+    "id": "h-002", "name": "Kokilaben Dhirubhai Ambani Hospital", "phone": "+912242696969",
+    "location": { "lat": 19.1300, "lng": 72.8259, "address": { "line1": "Andheri West", "city": "Mumbai", "state": "MH", "postalCode": "400053", "country": "IN" } },
+    "emergency24x7": true, "hasBloodBank": true, "specialties": ["Oncology", "Neurology"], "ratingAvg": 4.7
+  },
+  {
+    "id": "h-003", "name": "Tata Memorial Hospital", "phone": "+912224177000",
+    "location": { "lat": 19.0058, "lng": 72.8438, "address": { "line1": "Parel", "city": "Mumbai", "state": "MH", "postalCode": "400012", "country": "IN" } },
+    "emergency24x7": true, "hasBloodBank": true, "specialties": ["Oncology"], "ratingAvg": 4.8
+  },
+  {
+    "id": "h-004", "name": "Fortis Hospital Mulund", "phone": "+912267994444",
+    "location": { "lat": 19.1670, "lng": 72.9531, "address": { "line1": "Mulund West", "city": "Mumbai", "state": "MH", "postalCode": "400078", "country": "IN" } },
+    "emergency24x7": true, "hasBloodBank": false, "specialties": ["Cardiology"], "ratingAvg": 4.4
+  }
+]

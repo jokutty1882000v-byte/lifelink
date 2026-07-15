@@ -1,0 +1,84 @@
+// -----------------------------------------------------------------------------
+// LifeLink — global styles
+// Layers: Tailwind base → Material 3 theme → app tokens → utilities
+// -----------------------------------------------------------------------------
+@use '@angular/material' as mat;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@include mat.core();
+
+// Medical palette — red primary, neutral surface, subtle accents
+$ll-primary: mat.m2-define-palette(mat.$m2-red-palette, 600, 400, 800);
+$ll-accent:  mat.m2-define-palette(mat.$m2-blue-grey-palette, 500);
+$ll-warn:    mat.m2-define-palette(mat.$m2-deep-orange-palette);
+
+$ll-light-theme: mat.m2-define-light-theme((
+  color:      (primary: $ll-primary, accent: $ll-accent, warn: $ll-warn),
+  typography: mat.m2-define-typography-config($font-family: 'Roboto, sans-serif'),
+  density:    0,
+));
+
+$ll-dark-theme: mat.m2-define-dark-theme((
+  color:      (primary: $ll-primary, accent: $ll-accent, warn: $ll-warn),
+  typography: mat.m2-define-typography-config($font-family: 'Roboto, sans-serif'),
+  density:    0,
+));
+
+// Light by default
+@include mat.all-component-themes($ll-light-theme);
+
+// Dark opts in via `.dark` on <html>
+.dark {
+  @include mat.all-component-colors($ll-dark-theme);
+}
+
+// Design tokens
+:root {
+  --ll-radius:      1rem;
+  --ll-shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.06);
+  --ll-shadow-md:   0 4px 12px rgba(0, 0, 0, 0.08);
+  --ll-transition:  200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// --- Minimal base reset (Tailwind preflight is disabled; Material owns the rest)
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--mat-sys-surface, #fafafa);
+}
+
+h1, h2, h3, h4, h5, h6, p, dl, dd, figure { margin: 0; }
+img, video, canvas { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+// --- Material component tweaks -----------------------------------------------
+
+// Every mat-form-field should fill its parent by default (Material ships them
+// as inline-block with an intrinsic width, which fights our grid/flex layouts).
+mat-form-field.mat-mdc-form-field { width: 100%; }
+
+// Full-width datepicker input trigger
+.mat-mdc-form-field-icon-suffix { display: inline-flex; align-items: center; }
+
+// Error snackbar styling used by errorInterceptor
+.ll-snack-error .mdc-snackbar__surface { background-color: #b71c1c !important; }
+
+// Material Symbols
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+// Global reduced-motion respect
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

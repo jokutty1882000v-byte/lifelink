@@ -1,0 +1,22 @@
+[
+  {
+    "id": "n-001", "type": "emergency_alert", "severity": "critical",
+    "title": "Emergency: O- needed at Tata Memorial",
+    "body": "A patient needs 2 units of O- blood within 4 hours. Tap to respond.",
+    "createdAt": "2026-07-15T09:12:00Z", "read": false,
+    "actionUrl": "/requests/req-emerg-01",
+    "metadata": { "requestId": "req-emerg-01", "bloodGroup": "O-" }
+  },
+  {
+    "id": "n-002", "type": "donor_match", "severity": "success",
+    "title": "You matched a donor",
+    "body": "Rahul Verma (O-) accepted your request. Contact opened.",
+    "createdAt": "2026-07-14T18:04:00Z", "read": false, "actionUrl": "/donors/d-003"
+  },
+  {
+    "id": "n-003", "type": "eligibility_reminder", "severity": "info",
+    "title": "You're eligible again",
+    "body": "It's been 56 days since your last donation. Consider donating again.",
+    "createdAt": "2026-07-10T07:00:00Z", "read": true
+  }
+]

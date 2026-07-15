@@ -1,0 +1,44 @@
+[
+  {
+    "id": "d-001", "userId": "u-001", "fullName": "Aarav Sharma",
+    "bloodGroup": "O+", "age": 28, "gender": "male", "phone": "+919812340001",
+    "location": { "lat": 19.0760, "lng": 72.8777, "address": { "line1": "Bandra West", "city": "Mumbai", "state": "MH", "postalCode": "400050", "country": "IN" } },
+    "availability": "available", "lastDonationDate": "2026-03-10", "totalDonations": 12,
+    "isEligible": true, "weightKg": 72, "hemoglobin": 14.2, "ratingAvg": 4.8, "responseRateAvg": 0.9
+  },
+  {
+    "id": "d-002", "userId": "u-002", "fullName": "Priya Menon",
+    "bloodGroup": "A+", "age": 32, "gender": "female", "phone": "+919812340002",
+    "location": { "lat": 19.1197, "lng": 72.9051, "address": { "line1": "Powai", "city": "Mumbai", "state": "MH", "postalCode": "400076", "country": "IN" } },
+    "availability": "available", "lastDonationDate": "2025-11-02", "totalDonations": 7,
+    "isEligible": true, "weightKg": 58, "hemoglobin": 13.1, "ratingAvg": 4.6, "responseRateAvg": 0.85
+  },
+  {
+    "id": "d-003", "userId": "u-003", "fullName": "Rahul Verma",
+    "bloodGroup": "O-", "age": 35, "gender": "male", "phone": "+919812340003",
+    "location": { "lat": 19.0330, "lng": 73.0297, "address": { "line1": "Vashi", "city": "Navi Mumbai", "state": "MH", "postalCode": "400703", "country": "IN" } },
+    "availability": "available", "lastDonationDate": "2025-08-14", "totalDonations": 22,
+    "isEligible": true, "weightKg": 80, "hemoglobin": 15.0, "ratingAvg": 5.0, "responseRateAvg": 0.95
+  },
+  {
+    "id": "d-004", "userId": "u-004", "fullName": "Neha Iyer",
+    "bloodGroup": "B+", "age": 26, "gender": "female", "phone": "+919812340004",
+    "location": { "lat": 19.2183, "lng": 72.9781, "address": { "line1": "Thane", "city": "Thane", "state": "MH", "postalCode": "400601", "country": "IN" } },
+    "availability": "unavailable", "lastDonationDate": "2026-05-01", "totalDonations": 3,
+    "isEligible": false, "weightKg": 55, "hemoglobin": 12.5, "ratingAvg": 4.2, "responseRateAvg": 0.6
+  },
+  {
+    "id": "d-005", "userId": "u-005", "fullName": "Karan Patel",
+    "bloodGroup": "AB+", "age": 40, "gender": "male", "phone": "+919812340005",
+    "location": { "lat": 19.0176, "lng": 72.8562, "address": { "line1": "Worli", "city": "Mumbai", "state": "MH", "postalCode": "400018", "country": "IN" } },
+    "availability": "available", "lastDonationDate": "2025-06-20", "totalDonations": 15,
+    "isEligible": true, "weightKg": 78, "hemoglobin": 14.7, "ratingAvg": 4.7, "responseRateAvg": 0.8
+  },
+  {
+    "id": "d-006", "userId": "u-006", "fullName": "Sana Khan",
+    "bloodGroup": "O+", "age": 24, "gender": "female", "phone": "+919812340006",
+    "location": { "lat": 19.0821, "lng": 72.7411, "address": { "line1": "Versova", "city": "Mumbai", "state": "MH", "postalCode": "400061", "country": "IN" } },
+    "availability": "available", "totalDonations": 1,
+    "isEligible": true, "weightKg": 60, "hemoglobin": 13.4, "ratingAvg": 4.5, "responseRateAvg": 0.75
+  }
+]
