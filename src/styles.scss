@@ -70,9 +70,16 @@ mat-form-field.mat-mdc-form-field { width: 100%; }
 // Error snackbar styling used by errorInterceptor
 .ll-snack-error .mdc-snackbar__surface { background-color: #b71c1c !important; }
 
-// Material Symbols
+// Material Symbols (optional variable font — kept for any future use)
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+// mat-icon renders its ligature name as text until the icon font loads.
+// Clip it to the icon box so an unresolved glyph can never overflow the layout.
+mat-icon.mat-icon {
+  overflow: hidden;
+  line-height: 1;
 }
 
 // Global reduced-motion respect
