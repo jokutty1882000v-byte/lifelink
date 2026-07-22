@@ -8,9 +8,11 @@ export interface AgentInput {
   locationHint?: { lat: number; lng: number };
 }
 
-/** Streaming token frame (SSE / chunked) coming back from the Python agent. */
+/** Streaming token frame (SSE / chunked) coming back from the Python agent.
+ *  Any single field is optional — a frame may carry just a delta, just a tool
+ *  event, or just `done: true` at the end. */
 export interface AgentStreamChunk {
-  delta: string;
+  delta?: string;
   done?: boolean;
   toolCall?: { name: string; args: Record<string, unknown> };
   toolResult?: unknown;

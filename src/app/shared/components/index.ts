@@ -8,3 +8,7 @@ export * from './hospital-card/hospital-card.component';
 export * from './blood-bank-card/blood-bank-card.component';
 export * from './confirm-dialog/confirm-dialog.component';
 export * from './map-view/map-view.component';
+export * from './form-error/form-error.component';
+export * from './ranking-explain/ranking-explain.dialog';
+export * from './tool-call-chip/tool-call-chip.component';
+export * from './contact-donor-sheet/contact-donor-sheet.component';

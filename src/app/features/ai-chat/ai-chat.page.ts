@@ -12,6 +12,7 @@ import { AgentResponse } from '@core/interfaces/ai-agent.interface';
 import { AiChatStore } from '@state/ai-chat.store';
 import { AutofocusDirective } from '@shared/directives/autofocus.directive';
 import { DonorCardComponent } from '@shared/components/donor-card/donor-card.component';
+import { ToolCallChipComponent } from '@shared/components/tool-call-chip/tool-call-chip.component';
 
 @Component({
   selector: 'll-ai-chat-page',
@@ -19,7 +20,7 @@ import { DonorCardComponent } from '@shared/components/donor-card/donor-card.com
   imports: [
     CommonModule, FormsModule,
     MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatChipsModule,
-    AutofocusDirective, DonorCardComponent,
+    AutofocusDirective, DonorCardComponent, ToolCallChipComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -48,6 +49,13 @@ import { DonorCardComponent } from '@shared/components/donor-card/donor-card.com
             <div [class]="bubble(m.role)">
               @if (m.content) { {{ m.content }} }
               @if (m.streaming) { <span class="animate-pulse">▊</span> }
+              @if (m.toolEvents?.length) {
+                <div class="mt-2 -mx-1">
+                  @for (t of m.toolEvents; track t.name + $index) {
+                    <ll-tool-call-chip [event]="t" />
+                  }
+                </div>
+              }
               @if (m.error) { <span class="text-red-400 text-xs block mt-1">{{ m.error }}</span> }
             </div>
           </div>

@@ -118,12 +118,32 @@ export class AiService {
   }
 
   private mockStream(input: AgentInput): Observable<AgentStreamChunk> {
+    const text = input.message.toLowerCase();
+    const isEmergency = /(urgent|emergency|asap|immediately|critical)/.test(text);
+    const bgMatch     = text.match(/\b(a|b|ab|o)\s*[-+]?\b/i)?.[0]?.toUpperCase().replace(/\s+/g, '');
+    const bg          = bgMatch ?? 'O+';
+
     return from(
-      (async function* () {
+      (async function* (): AsyncGenerator<AgentStreamChunk> {
         const opener = 'Analyzing your request… ';
-        for (const ch of opener) { await new Promise((r) => setTimeout(r, 20)); yield { delta: ch }; }
-        const body = `Interpreting "${input.message}" and ranking donors nearby.`;
-        for (const ch of body) { await new Promise((r) => setTimeout(r, 15)); yield { delta: ch }; }
+        for (const ch of opener) { await new Promise((r) => setTimeout(r, 15)); yield { delta: ch }; }
+
+        yield { toolCall: { name: 'search_donors', args: { bloodGroup: bg, radiusKm: isEmergency ? 50 : 25 } } };
+        await new Promise((r) => setTimeout(r, 300));
+        const foundCount = Math.floor(Math.random() * 5) + 1;
+        yield { toolResult: { matches: foundCount } };
+
+        const mid = isEmergency
+          ? `\n🚨 Emergency detected. Broadening radius to 50km. `
+          : `\nFound ${foundCount} candidates. `;
+        for (const ch of mid) { await new Promise((r) => setTimeout(r, 15)); yield { delta: ch }; }
+
+        yield { toolCall: { name: 'predict_availability', args: { topN: 3 } } };
+        await new Promise((r) => setTimeout(r, 250));
+        yield { toolResult: { avgProbability: 0.71 } };
+
+        const tail = `Ranking by proximity, eligibility and response history.`;
+        for (const ch of tail) { await new Promise((r) => setTimeout(r, 15)); yield { delta: ch }; }
         yield { delta: '', done: true };
       })(),
     );

@@ -1,0 +1,10 @@
+[
+  { "id": "u-001", "fullName": "Aarav Sharma",  "email": "aarav@example.com",  "phone": "+919812340001", "role": "donor",     "bloodGroup": "O+",  "isVerified": true,  "createdAt": "2025-06-14T08:00:00Z", "updatedAt": "2026-07-01T08:00:00Z" },
+  { "id": "u-002", "fullName": "Priya Menon",   "email": "priya@example.com",  "phone": "+919812340002", "role": "donor",     "bloodGroup": "A+",  "isVerified": true,  "createdAt": "2025-07-02T08:00:00Z", "updatedAt": "2026-07-02T08:00:00Z" },
+  { "id": "u-003", "fullName": "Rahul Verma",   "email": "rahul@example.com",  "phone": "+919812340003", "role": "donor",     "bloodGroup": "O-",  "isVerified": true,  "createdAt": "2024-11-11T08:00:00Z", "updatedAt": "2026-07-10T08:00:00Z" },
+  { "id": "u-004", "fullName": "Neha Iyer",     "email": "neha@example.com",   "phone": "+919812340004", "role": "donor",     "bloodGroup": "B+",  "isVerified": false, "createdAt": "2026-02-19T08:00:00Z", "updatedAt": "2026-07-05T08:00:00Z" },
+  { "id": "u-005", "fullName": "Karan Patel",   "email": "karan@example.com",  "phone": "+919812340005", "role": "requester", "bloodGroup": "AB+", "isVerified": true,  "createdAt": "2025-12-30T08:00:00Z", "updatedAt": "2026-07-08T08:00:00Z" },
+  { "id": "u-006", "fullName": "Sana Khan",     "email": "sana@example.com",   "phone": "+919812340006", "role": "donor",     "bloodGroup": "O+",  "isVerified": true,  "createdAt": "2026-05-01T08:00:00Z", "updatedAt": "2026-07-12T08:00:00Z" },
+  { "id": "u-007", "fullName": "Dr. Mehta",     "email": "mehta@example.com",  "phone": "+919812340007", "role": "hospital_staff", "isVerified": true, "createdAt": "2025-04-20T08:00:00Z", "updatedAt": "2026-06-30T08:00:00Z" },
+  { "id": "u-008", "fullName": "Admin Root",    "email": "admin@lifelink.com", "phone": "+919812340008", "role": "admin",     "isVerified": true,  "createdAt": "2024-01-01T08:00:00Z", "updatedAt": "2026-07-15T08:00:00Z" }
+]

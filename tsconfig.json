@@ -1,10 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
@@ -16,13 +14,12 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "baseUrl": "./",
     "paths": {
-      "@core/*":     ["src/app/core/*"],
-      "@shared/*":   ["src/app/shared/*"],
-      "@features/*": ["src/app/features/*"],
-      "@state/*":    ["src/app/state/*"],
-      "@env/*":      ["src/environments/*"]
+      "@core/*":     ["./src/app/core/*"],
+      "@shared/*":   ["./src/app/shared/*"],
+      "@features/*": ["./src/app/features/*"],
+      "@state/*":    ["./src/app/state/*"],
+      "@env/*":      ["./src/environments/*"]
     },
     "lib": ["ES2022", "dom"]
   },

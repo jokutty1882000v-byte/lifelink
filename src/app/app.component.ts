@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RealtimeService } from '@core/services/realtime.service';
 
 @Component({
   selector: 'll-root',
@@ -8,4 +9,8 @@ import { RouterOutlet } from '@angular/router';
   template: `<router-outlet />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class AppComponent {
+  // Injecting boots the realtime layer: opens the notification WS after login,
+  // closes on logout, and (in mock mode) emits synthetic events every 30s.
+  private readonly realtime = inject(RealtimeService);
+}

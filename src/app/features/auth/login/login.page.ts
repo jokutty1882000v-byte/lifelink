@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '@core/services/auth.service';
+import { AnalyticsService } from '@core/services/analytics.service';
 import { FormErrorComponent } from '@shared/components/form-error/form-error.component';
 
 @Component({
@@ -57,11 +58,12 @@ import { FormErrorComponent } from '@shared/components/form-error/form-error.com
   `,
 })
 export class LoginPage {
-  private readonly fb     = inject(FormBuilder).nonNullable;
-  private readonly auth   = inject(AuthService);
-  private readonly router = inject(Router);
-  private readonly route  = inject(ActivatedRoute);
-  private readonly snack  = inject(MatSnackBar);
+  private readonly fb        = inject(FormBuilder).nonNullable;
+  private readonly auth      = inject(AuthService);
+  private readonly router    = inject(Router);
+  private readonly route     = inject(ActivatedRoute);
+  private readonly snack     = inject(MatSnackBar);
+  private readonly analytics = inject(AnalyticsService);
 
   readonly loading = signal(false);
   readonly showPwd = signal(false);
@@ -75,8 +77,9 @@ export class LoginPage {
     if (this.form.invalid || this.loading()) { this.form.markAllAsTouched(); return; }
     this.loading.set(true);
     this.auth.login(this.form.getRawValue()).subscribe({
-      next: () => {
+      next: (session) => {
         this.loading.set(false);
+        this.analytics.track({ name: 'auth.login', props: { role: session.user.role } });
         const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') ?? '/dashboard';
         this.router.navigateByUrl(returnUrl);
       },

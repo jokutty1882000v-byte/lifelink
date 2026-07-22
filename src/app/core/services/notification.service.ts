@@ -65,4 +65,11 @@ export class NotificationService {
   onIncoming(): Observable<AppNotification> {
     return this.incoming$.asObservable();
   }
+
+  /** Public entry-point used by RealtimeService (and tests) to inject a push
+   *  without needing a live WebSocket — keeps mock mode indistinguishable from live. */
+  pushIncoming(n: AppNotification): void {
+    this._items.update((list) => [n, ...list]);
+    this.incoming$.next(n);
+  }
 }

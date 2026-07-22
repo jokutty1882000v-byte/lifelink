@@ -7,3 +7,4 @@ export * from './blood-bank.model';
 export * from './blood-request.model';
 export * from './notification.model';
 export * from './chat-message.model';
+export * from './donation.model';

@@ -70,6 +70,24 @@ mat-form-field.mat-mdc-form-field { width: 100%; }
 // Error snackbar styling used by errorInterceptor
 .ll-snack-error .mdc-snackbar__surface { background-color: #b71c1c !important; }
 
+// --- Accessibility ----------------------------------------------------------
+
+// Visually hide until focused; the "skip to main content" link in the layout.
+.ll-skip-link {
+  position: absolute;
+  top: -3rem; left: 0.5rem; z-index: 100;
+  padding: 0.5rem 0.75rem; border-radius: 0.5rem;
+  background: #b71c1c; color: #fff; font-weight: 500;
+  transition: top 150ms ease-out;
+}
+.ll-skip-link:focus { top: 0.5rem; outline: 2px solid #fff; }
+
+// Keyboard focus rings — Material has its own, but for arbitrary anchors:
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #e53935;
+  outline-offset: 2px;
+}
+
 // Material Symbols
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;

@@ -22,9 +22,11 @@ import { NotificationsStore } from '@state/notifications.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="min-h-screen flex flex-col bg-gray-50 dark:bg-neutral-900">
+      <a href="#ll-main" class="ll-skip-link">Skip to main content</a>
+
       <!-- Top app bar -->
-      <mat-toolbar color="warn" class="!sticky top-0 z-30 !shadow-md">
-        <a routerLink="/dashboard" class="flex items-center gap-2 text-white no-underline">
+      <mat-toolbar color="warn" class="!sticky top-0 z-30 !shadow-md" role="banner">
+        <a routerLink="/dashboard" class="flex items-center gap-2 text-white no-underline" aria-label="Home">
           <mat-icon>bloodtype</mat-icon>
           <span class="font-semibold tracking-wide">LifeLink</span>
         </a>
@@ -57,7 +59,7 @@ import { NotificationsStore } from '@state/notifications.store';
 
       <!-- Content + desktop side rail -->
       <div class="flex flex-1 min-h-0">
-        <nav class="hidden md:flex flex-col w-56 border-r bg-white dark:bg-neutral-950 dark:border-neutral-800 p-2 gap-1">
+        <nav class="hidden md:flex flex-col w-56 border-r bg-white dark:bg-neutral-950 dark:border-neutral-800 p-2 gap-1" aria-label="Primary">
           @for (item of nav; track item.path) {
             <a
               [routerLink]="item.path" routerLinkActive="!bg-blood-50 !text-blood-800 dark:!bg-blood-900/30 dark:!text-blood-100"
@@ -69,13 +71,13 @@ import { NotificationsStore } from '@state/notifications.store';
           }
         </nav>
 
-        <main class="flex-1 min-w-0 pb-20 md:pb-6 overflow-y-auto">
+        <main id="ll-main" class="flex-1 min-w-0 pb-20 md:pb-6 overflow-y-auto" tabindex="-1">
           <router-outlet />
         </main>
       </div>
 
       <!-- Bottom nav (mobile) -->
-      <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white dark:bg-neutral-950 border-t dark:border-neutral-800 flex justify-around">
+      <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white dark:bg-neutral-950 border-t dark:border-neutral-800 flex justify-around" aria-label="Bottom">
         @for (item of bottomNav; track item.path) {
           <a
             [routerLink]="item.path" routerLinkActive="text-blood-700 dark:text-blood-300"

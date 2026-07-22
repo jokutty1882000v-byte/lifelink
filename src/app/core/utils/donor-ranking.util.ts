@@ -13,13 +13,14 @@ export interface RankingWeights {
   response:  number;   // higher response rate
 }
 
-const DEFAULT_WEIGHTS: RankingWeights = {
+export const DEFAULT_RANKING_WEIGHTS: RankingWeights = {
   distance:  0.40,
   eligible:  0.25,
   available: 0.15,
   rating:    0.10,
   response:  0.10,
 };
+const DEFAULT_WEIGHTS = DEFAULT_RANKING_WEIGHTS;
 
 /**
  * Pure, deterministic ranking used both by the frontend (fast filtering)

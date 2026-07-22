@@ -34,6 +34,7 @@ export const APP_ROUTES: Routes = [
       { path: 'donors/:id',     loadComponent: () => import('@features/donor-detail/donor-detail.page').then((m) => m.DonorDetailPage) },
       { path: 'request',        loadComponent: () => import('@features/request/request.page').then((m) => m.RequestPage) },
       { path: 'hospitals',      loadComponent: () => import('@features/hospitals/hospitals.page').then((m) => m.HospitalsPage) },
+      { path: 'hospitals/:id',  loadComponent: () => import('@features/hospitals/hospital-detail.page').then((m) => m.HospitalDetailPage) },
       { path: 'blood-banks',    loadComponent: () => import('@features/blood-banks/blood-banks.page').then((m) => m.BloodBanksPage) },
       { path: 'ai-chat',        loadComponent: () => import('@features/ai-chat/ai-chat.page').then((m) => m.AiChatPage) },
       { path: 'notifications',  loadComponent: () => import('@features/notifications/notifications.page').then((m) => m.NotificationsPage) },

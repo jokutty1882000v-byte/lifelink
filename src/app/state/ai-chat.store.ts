@@ -33,7 +33,21 @@ export class AiChatStore {
       next: (chunk) => {
         if (chunk.done) return;
         this._messages.update((list) =>
-          list.map((m) => (m.id === draft.id ? { ...m, content: m.content + chunk.delta } : m)),
+          list.map((m) => {
+            if (m.id !== draft.id) return m;
+            let next = { ...m, content: m.content + (chunk.delta ?? '') };
+            if (chunk.toolCall) {
+              const events = [...(next.toolEvents ?? []), { name: chunk.toolCall.name, args: chunk.toolCall.args }];
+              next = { ...next, toolEvents: events };
+            }
+            if (chunk.toolResult !== undefined) {
+              const events = [...(next.toolEvents ?? [])];
+              const last = events[events.length - 1];
+              if (last && last.result === undefined) events[events.length - 1] = { ...last, result: chunk.toolResult };
+              next = { ...next, toolEvents: events };
+            }
+            return next;
+          }),
         );
       },
       error: (err) => {

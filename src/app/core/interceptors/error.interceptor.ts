@@ -7,9 +7,9 @@ import { AuthService } from '../services/auth.service';
 import { ApiError } from '../interfaces/api-result.interface';
 
 /**
- * Global error handler:
- * - 401 → wipe session and bounce to /auth/login
- * - other → surface a toast; propagate so features can still handle if they want
+ * Runs AFTER the auth interceptor. By the time we see a 401 here, refresh has
+ * already been attempted and failed — that's when we clear the session and bounce.
+ * Everything else surfaces as a toast; features can still catch it locally.
  */
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const auth   = inject(AuthService);
@@ -18,10 +18,10 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
-      if (err.status === 401) {
+      if (err.status === 401 || err.status === 403) {
         auth.logout();
         router.navigate(['/auth/login']);
-      } else {
+      } else if (err.status !== 0) {
         snack.open(extractMessage(err), 'Dismiss', { duration: 5000, panelClass: 'll-snack-error' });
       }
       return throwError(() => err);
