@@ -9,8 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="min-h-screen flex bg-gray-50 dark:bg-neutral-900">
-      <aside class="w-56 bg-neutral-900 text-white flex flex-col p-3 gap-1">
+    <div class="min-h-screen flex bg-transparent">
+      <aside class="w-56 bg-neutral-900/70 backdrop-blur-xl backdrop-saturate-150 border-r border-white/10 text-white flex flex-col p-3 gap-1">
         <div class="px-2 py-3 text-lg font-semibold flex items-center gap-2">
           <mat-icon>admin_panel_settings</mat-icon> Admin
         </div>

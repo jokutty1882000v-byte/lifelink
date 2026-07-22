@@ -3,6 +3,15 @@
 // Layers: Tailwind base → Material 3 theme → app tokens → utilities
 // -----------------------------------------------------------------------------
 @use '@angular/material' as mat;
+
+// Self-hosted fonts — bundled at build time so the app never depends on
+// fonts.googleapis.com (which can be blocked by firewalls/ad-blockers).
+@import 'material-icons/iconfont/filled.css';
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,6 +49,20 @@ $ll-dark-theme: mat.m2-define-dark-theme((
   --ll-shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.06);
   --ll-shadow-md:   0 4px 12px rgba(0, 0, 0, 0.08);
   --ll-transition:  200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Glassmorphism tokens
+  --ll-glass-bg:      rgba(255, 255, 255, 0.55);
+  --ll-glass-bg-soft: rgba(255, 255, 255, 0.35);
+  --ll-glass-border:  rgba(255, 255, 255, 0.65);
+  --ll-glass-shadow:  0 8px 32px rgba(140, 30, 30, 0.12);
+  --ll-glass-blur:    16px;
+}
+
+.dark {
+  --ll-glass-bg:      rgba(28, 28, 34, 0.55);
+  --ll-glass-bg-soft: rgba(28, 28, 34, 0.35);
+  --ll-glass-border:  rgba(255, 255, 255, 0.12);
+  --ll-glass-shadow:  0 8px 32px rgba(0, 0, 0, 0.45);
 }
 
 // --- Minimal base reset (Tailwind preflight is disabled; Material owns the rest)
@@ -53,10 +76,76 @@ html, body {
   background: var(--mat-sys-surface, #fafafa);
 }
 
+// Aurora backdrop — the colorful canvas every glass surface blurs against.
+body {
+  background:
+    radial-gradient(ellipse 60% 50% at 12% 8%,  rgba(229, 57, 53, 0.16), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 88% 18%, rgba(96, 125, 219, 0.14), transparent 60%),
+    radial-gradient(ellipse 55% 50% at 75% 85%, rgba(233, 30, 99, 0.10), transparent 60%),
+    radial-gradient(ellipse 45% 40% at 20% 90%, rgba(255, 171, 145, 0.16), transparent 60%),
+    linear-gradient(160deg, #fdf5f5 0%, #f4f6fb 55%, #fbf1f3 100%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  background:
+    radial-gradient(ellipse 60% 50% at 12% 8%,  rgba(229, 57, 53, 0.20), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 88% 18%, rgba(63, 81, 181, 0.18), transparent 60%),
+    radial-gradient(ellipse 55% 50% at 75% 85%, rgba(194, 24, 91, 0.14), transparent 60%),
+    linear-gradient(160deg, #17181d 0%, #131722 55%, #1a1417 100%);
+  background-attachment: fixed;
+}
+
 h1, h2, h3, h4, h5, h6, p, dl, dd, figure { margin: 0; }
 img, video, canvas { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; }
+
+// --- Glassmorphism surfaces ---------------------------------------------------
+
+// Reusable frosted-glass panel
+.ll-glass {
+  background: var(--ll-glass-bg);
+  -webkit-backdrop-filter: blur(var(--ll-glass-blur)) saturate(160%);
+  backdrop-filter: blur(var(--ll-glass-blur)) saturate(160%);
+  border: 1px solid var(--ll-glass-border);
+  box-shadow: var(--ll-glass-shadow);
+}
+
+// Every mat-card becomes a glass panel — covers cards on all feature pages.
+mat-card.mat-mdc-card {
+  background: var(--ll-glass-bg) !important;
+  -webkit-backdrop-filter: blur(var(--ll-glass-blur)) saturate(160%);
+  backdrop-filter: blur(var(--ll-glass-blur)) saturate(160%);
+  border: 1px solid var(--ll-glass-border) !important;
+  box-shadow: var(--ll-glass-shadow) !important;
+  border-radius: 1.25rem !important;
+  transition: transform var(--ll-transition), box-shadow var(--ll-transition);
+}
+a mat-card.mat-mdc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(140, 30, 30, 0.18) !important;
+}
+
+// Floating overlays (menus, dialogs, autocomplete, snackbar container) as glass
+.mat-mdc-menu-panel,
+.mat-mdc-dialog-surface,
+.mat-mdc-autocomplete-panel,
+.mat-mdc-select-panel {
+  background: var(--ll-glass-bg) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--ll-glass-border) !important;
+  box-shadow: var(--ll-glass-shadow) !important;
+  border-radius: 1rem !important;
+}
+
+// Frost the outlined form fields so inputs sit on glass, not flat white
+.mat-mdc-form-field .mdc-notched-outline__leading,
+.mat-mdc-form-field .mdc-notched-outline__notch,
+.mat-mdc-form-field .mdc-notched-outline__trailing {
+  background: var(--ll-glass-bg-soft);
+}
 
 // --- Material component tweaks -----------------------------------------------
 

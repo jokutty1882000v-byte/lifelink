@@ -21,9 +21,9 @@ import { NotificationsStore } from '@state/notifications.store';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="min-h-screen flex flex-col bg-gray-50 dark:bg-neutral-900">
-      <!-- Top app bar -->
-      <mat-toolbar color="warn" class="!sticky top-0 z-30 !shadow-md">
+    <div class="min-h-screen flex flex-col bg-transparent">
+      <!-- Top app bar — frosted red glass -->
+      <mat-toolbar class="!sticky top-0 z-30 !bg-blood-600/70 !text-white backdrop-blur-xl backdrop-saturate-150 border-b border-white/20 !shadow-lg">
         <a routerLink="/dashboard" class="flex items-center gap-2 text-white no-underline">
           <mat-icon>bloodtype</mat-icon>
           <span class="font-semibold tracking-wide">LifeLink</span>
@@ -57,11 +57,11 @@ import { NotificationsStore } from '@state/notifications.store';
 
       <!-- Content + desktop side rail -->
       <div class="flex flex-1 min-h-0">
-        <nav class="hidden md:flex flex-col w-56 border-r bg-white dark:bg-neutral-950 dark:border-neutral-800 p-2 gap-1">
+        <nav class="hidden md:flex flex-col w-56 p-2 gap-1 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl backdrop-saturate-150 border-r border-white/50 dark:border-white/10">
           @for (item of nav; track item.path) {
             <a
-              [routerLink]="item.path" routerLinkActive="!bg-blood-50 !text-blood-800 dark:!bg-blood-900/30 dark:!text-blood-100"
-              class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-800 no-underline"
+              [routerLink]="item.path" routerLinkActive="!bg-blood-500/15 !text-blood-800 dark:!bg-blood-500/25 dark:!text-blood-100 !shadow-sm !border-white/60 dark:!border-white/10"
+              class="flex items-center gap-3 px-3 py-2 rounded-xl border border-transparent text-sm text-gray-700 dark:text-gray-200 hover:bg-white/50 dark:hover:bg-white/10 no-underline transition-colors"
             >
               <mat-icon class="!text-xl">{{ item.icon }}</mat-icon>
               <span>{{ item.label }}</span>
@@ -75,7 +75,7 @@ import { NotificationsStore } from '@state/notifications.store';
       </div>
 
       <!-- Bottom nav (mobile) -->
-      <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white dark:bg-neutral-950 border-t dark:border-neutral-800 flex justify-around">
+      <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-xl backdrop-saturate-150 border-t border-white/50 dark:border-white/10 flex justify-around">
         @for (item of bottomNav; track item.path) {
           <a
             [routerLink]="item.path" routerLinkActive="text-blood-700 dark:text-blood-300"
